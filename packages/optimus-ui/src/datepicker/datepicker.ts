@@ -1490,7 +1490,7 @@ export class DatePicker extends BaseInput<DatePickerPassThrough> {
         let prevMonthDaysLength = this.getDaysCountInPrevMonth(month, year);
         let dayNo = 1;
         let today = new Date();
-        let weekNumbers = [];
+        let weekNumbers: number[] = [];
         let monthRows = Math.ceil((daysLength + firstDay) / 7);
 
         for (let i = 0; i < monthRows; i++) {
@@ -1547,10 +1547,10 @@ export class DatePicker extends BaseInput<DatePickerPassThrough> {
             }
 
             if (this.showWeek) {
-                (weekNumbers as any[]).push(this.getWeekNumber(new Date(week[0].year, week[0].month, week[0].day)));
+                weekNumbers.push(this.getWeekNumber(new Date(week[0].year, week[0].month, week[0].day)));
             }
 
-            (dates as any[]).push(week);
+            dates.push(week);
         }
 
         return { month, year, dates, weekNumbers };
